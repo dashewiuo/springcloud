@@ -1,0 +1,206 @@
+#logging.config=classpath:logback.xml  
+#logging.path=d:/logs
+
+server.port=1010
+server.session.timeout=60
+#Session timeout in seconds.
+
+#\u6307\u5b9aserver\u7ed1\u5b9a\u7684\u5730\u5740
+server.address=
+
+#\u662f\u5426\u5f00\u542f\u538b\u7f29\uff0c\u9ed8\u8ba4\u4e3afalse.
+server.compression.enabled=true
+
+#\u6307\u5b9a\u4e0d\u538b\u7f29\u7684user-agent\uff0c\u591a\u4e2a\u4ee5\u9017\u53f7\u5206\u9694\uff0c\u9ed8\u8ba4\u503c\u4e3a:text/html,text/xml,text/plain,text/css List of user-agents to exclude from compression.
+server.compression.excluded-user-agents=
+
+#\u6307\u5b9a\u8981\u538b\u7f29\u7684MIME type\uff0c\u591a\u4e2a\u4ee5\u9017\u53f7\u5206\u9694. Comma-separated list of MIME types that should be compressed. For instance `text/html,text/css,application/json`
+server.compression.mime-types=text/html,text/xml,text/plain,text/css
+
+#\u6267\u884c\u538b\u7f29\u7684\u9608\u503c\uff0c\u9ed8\u8ba4\u4e3a2048
+server.compression.min-response-size=2048
+
+server.connection-timeout=
+#Time in milliseconds that connectors will wait for another HTTP request before closing the connection. When not set, the connector's container-specific default will be used. Use a value of -1 to indicate no (i.e. infinite) timeout.
+#\u8bbe\u7f6eservlet context \u53c2\u6570
+server.context-parameters.*=
+#Servlet context init parameters. For instance `server.context-parameters.a=alpha`
+#\u8bbe\u5b9a\u5e94\u7528\u7684context-path.
+server.context-path=
+#Context path of the application.
+#\u8bbe\u5b9a\u5e94\u7528\u7684\u5c55\u793a\u540d\u79f0\uff0c\u9ed8\u8ba4: application
+server.display-name=application
+#Display name of the application.
+server.max-http-header-size=0
+#Maximum size in bytes of the HTTP message header.
+server.max-http-post-size=0
+#Maximum size in bytes of the HTTP post content.
+server.error.include-stacktrace=never
+#When to include a "stacktrace" attribute.
+server.error.path=/error
+#Path of the error controller.
+server.error.whitelabel.enabled=true
+#Enable the default error page displayed in browsers in case of a server error.
+server.jetty.acceptors=
+#Number of acceptor threads to use.
+server.jetty.selectors=
+#Number of selector threads to use.
+#\u8bbe\u5b9a\u7f16\u8bd1JSP\u7528\u7684servlet\uff0c\u9ed8\u8ba4: org.apache.jasper.servlet.JspServlet)
+server.jsp-servlet.class-name=org.apache.jasper.servlet.JspServlet
+#The class name of the JSP servlet.
+#\u8bbe\u7f6eJSP servlet \u521d\u59cb\u5316\u53c2\u6570.
+server.jsp-servlet.init-parameters.*=
+#Init parameters used to configure the JSP servlet
+#\u8bbe\u5b9aJSP servlet\u662f\u5426\u6ce8\u518c\u5230\u5185\u5d4c\u7684servlet\u5bb9\u5668\uff0c\u9ed8\u8ba4true
+server.jsp-servlet.registered=true
+#Whether or not the JSP servlet is registered
+server.server-header=
+#Value to use for the Server response header (no header is sent if empty)
+#\u8bbe\u5b9adispatcher servlet\u7684\u76d1\u542c\u8def\u5f84\uff0c\u9ed8\u8ba4\u4e3a: /
+server.servlet-path=/
+#Path of the main dispatcher servlet.
+server.use-forward-headers=
+#If X-Forwarded-* headers should be applied to the HttpRequest.
+#\u6307\u5b9asession cookie\u7684comment
+server.session.cookie.comment=
+#Comment for the session cookie.
+#\u6307\u5b9asession cookie\u7684domain
+server.session.cookie.domain=
+#Domain for the session cookie.
+#\u662f\u5426\u5f00\u542fHttpOnly.
+server.session.cookie.http-only=
+#"HttpOnly" flag for the session cookie.
+#\u8bbe\u5b9asession cookie\u7684\u6700\u5927age.
+server.session.cookie.max-age=
+# Maximum age of the session cookie in seconds.
+#\u8bbe\u5b9aSession cookie \u7684\u540d\u79f0.
+server.session.cookie.name=
+#Session cookie name.
+#\u8bbe\u5b9asession cookie\u7684\u8def\u5f84.
+server.session.cookie.path=
+#Path of the session cookie.
+#\u8bbe\u5b9asession cookie\u7684\u201cSecure\u201d flag.
+server.session.cookie.secure=
+#"Secure" flag for the session cookie.
+#\u91cd\u542f\u65f6\u662f\u5426\u6301\u4e45\u5316session\uff0c\u9ed8\u8ba4false
+server.session.persistent=false
+#Persist session data between restarts.
+server.session.store-dir=
+# Directory used to store session data.
+#\u8bbe\u5b9aSession\u7684\u8ffd\u8e2a\u6a21\u5f0f(cookie, url, ssl).
+server.session.tracking-modes=
+#Session tracking modes (one or more of the following: "cookie", "url", "ssl").
+
+#####################################################
+#\u662f\u5426\u652f\u6301SSL ciphers.
+server.ssl.ciphers=
+#Supported SSL ciphers.
+#\u8bbe\u5b9aclient authentication\u662fwanted \u8fd8\u662f needed.
+server.ssl.client-auth=
+# Whether client authentication is wanted ("want") or needed ("need"). Requires a trust store.
+#\u662f\u5426\u5f00\u542fssl\uff0c\u9ed8\u8ba4: true
+server.ssl.enabled=
+#Enable SSL support.
+server.ssl.enabled-protocols=
+#Enabled SSL protocols.
+#\u8bbe\u5b9akey store\u4e2dkey\u7684\u522b\u540d.
+server.ssl.key-alias=
+#Alias that identifies the key in the key store.
+#\u8bbf\u95eekey store\u4e2dkey\u7684\u5bc6\u7801.
+server.ssl.key-password=
+#Password used to access the key in the key store.
+#\u8bbe\u5b9a\u6301\u6709SSL certificate\u7684key store\u7684\u8def\u5f84\uff0c\u901a\u5e38\u662f\u4e00\u4e2a.jks\u6587\u4ef6.
+server.ssl.key-store=
+#Path to the key store that holds the SSL certificate (typically a jks file).
+#\u8bbe\u5b9a\u8bbf\u95eekey store\u7684\u5bc6\u7801.
+server.ssl.key-store-password=
+#Password used to access the key store.
+#\u8bbe\u5b9akey store\u7684\u63d0\u4f9b\u8005.
+server.ssl.key-store-provider=
+#Provider for the key store.
+#\u8bbe\u5b9akey store\u7684\u7c7b\u578b.
+server.ssl.key-store-type=
+#Type of the key store.
+#\u4f7f\u7528\u7684SSL\u534f\u8bae\uff0c\u9ed8\u8ba4: TLS
+server.ssl.protocol=TLS
+# SSL protocol to use.
+#\u6301\u6709SSL certificates\u7684Trust store.
+server.ssl.trust-store=
+#Trust store that holds SSL certificates.
+#\u8bbf\u95eetrust store\u7684\u5bc6\u7801.
+server.ssl.trust-store-password=
+#Password used to access the trust store.
+#\u8bbe\u5b9atrust store\u7684\u63d0\u4f9b\u8005.
+server.ssl.trust-store-provider=
+#Provider for the trust store.
+#\u6307\u5b9atrust store\u7684\u7c7b\u578b.
+server.ssl.trust-store-type=
+# Type of the trust store.
+############################################################
+#\u8bbe\u5b9alog\u7684\u76ee\u5f55\uff0c\u9ed8\u8ba4: logs
+server.tomcat.accesslog.directory=logs
+# Directory in which log files are created. Can be relative to the tomcat base dir or absolute.
+#\u662f\u5426\u5f00\u542faccess log \uff0c\u9ed8\u8ba4: false
+server.tomcat.accesslog.enabled=false
+#Enable access log.
+#\u8bbe\u5b9aaccess logs\u7684\u683c\u5f0f\uff0c\u9ed8\u8ba4: common
+server.tomcat.accesslog.pattern=common
+#Format pattern for access logs.
+#\u8bbe\u5b9aLog \u6587\u4ef6\u7684\u524d\u7f00\uff0c\u9ed8\u8ba4: access_log
+server.tomcat.accesslog.prefix=access_log
+#Log file name prefix.
+server.tomcat.accesslog.rename-on-rotate=false
+# Defer inclusion of the date stamp in the file name until rotate time.
+#\u8bbe\u5b9aLog \u6587\u4ef6\u7684\u540e\u7f00\uff0c\u9ed8\u8ba4: .log
+server.tomcat.accesslog.suffix=.log
+#Log file name suffix.
+#\u540e\u53f0\u7ebf\u7a0b\u65b9\u6cd5\u7684Delay\u5927\u5c0f: 30
+server.tomcat.background-processor-delay=30
+#Delay in seconds between the invocation of backgroundProcess methods.
+#\u8bbe\u5b9aTomcat\u7684base \u76ee\u5f55\uff0c\u5982\u679c\u6ca1\u6709\u6307\u5b9a\u5219\u4f7f\u7528\u4e34\u65f6\u76ee\u5f55.
+server.tomcat.basedir=
+# Tomcat base directory. If not specified a temporary directory will be used.
+server.tomcat.max-http-header-size=0
+#\u8bbe\u5b9ahttp header\u7684\u6700\u5c0f\u503c\uff0c\u9ed8\u8ba4: 0
+#\u8bbe\u5b9a\u4fe1\u4efb\u7684IP\u6b63\u5219\u8868\u8fbe\u5f0f
+server.tomcat.internal-proxies=
+#10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|\\192\\.168\\.\\d{1,3}\\.\\d{1,3}|\\ 169\\.254\\.\\d{1,3}\\.\\d{1,3}|\\ 127\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|\\ 172\\.1[6-9]{1}\\.\\d{1,3}\\.\\d{1,3}|\\ 172\\.2[0-9]{1}\\.\\d{1,3}\\.\\d{1,3}|\\ 172\\.3[0-1]{1}\\.\\d{1,3}\\.\\d{1,3}#
+# regular expression matching trusted IP addresses.
+#\u8bbe\u5b9atomcat\u7684\u6700\u5927\u5de5\u4f5c\u7ebf\u7a0b\u6570\uff0c\u9ed8\u8ba4\u4e3a: 0
+server.tomcat.max-threads=1000
+#Maximum amount of worker threads.
+server.tomcat.min-spare-threads=100
+# Minimum amount of worker threads.
+#\u8bbe\u5b9ahttp header\u4f7f\u7528\u7684\uff0c\u7528\u6765\u8986\u76d6\u539f\u6765port\u7684value.
+server.tomcat.port-header=X-Forwarded-Port
+# Name of the HTTP header used to override the original port value.
+#\u8bbe\u5b9aHeader\u5305\u542b\u7684\u534f\u8bae\uff0c\u901a\u5e38\u662f X-Forwarded-Proto\uff0c\u5982\u679cremoteIpHeader\u6709\u503c\uff0c\u5219\u5c06\u8bbe\u7f6e\u4e3aRemoteIpValve.
+server.tomcat.protocol-header=
+#Header that holds the incoming protocol, usually named "X-Forwarded-Proto".
+#\u8bbe\u5b9a\u4f7f\u7528SSL\u7684header\u7684\u503c\uff0c\u9ed8\u8ba4https.
+server.tomcat.protocol-header-https-value=https
+#Value of the protocol header that indicates that the incoming request uses SSL.
+server.tomcat.redirect-context-root=
+#Whether requests to the context root should be redirected by appending a / to the path.
+#\u8bbe\u5b9aremote IP\u7684header\uff0c\u5982\u679cremoteIpHeader\u6709\u503c\uff0c\u5219\u8bbe\u7f6e\u4e3aRemoteIpValve
+server.tomcat.remote-ip-header=
+#Name of the http header from which the remote ip is extracted. For instance `X-FORWARDED-FOR`
+server.tomcat.uri-encoding=UTF-8
+#Character encoding to use to decode the URI.
+ 
+spring.application.name=eureka-server.group1
+
+#\u5411eureka\u670d\u52a1\u6ce8\u518c\u4fe1\u606f\u65f6\uff0c\u4f7f\u7528ip\u5730\u5740\uff0c\u9ed8\u8ba4\u4f7f\u7528hostname  
+eureka.instance.preferIpAddress=true  
+#eureka.instance.hostname=localhost
+#\u662f\u5426\u5c06eureka\u81ea\u8eab\u4f5c\u4e3a\u5e94\u7528\u6ce8\u518c\u5230eureka\u6ce8\u518c\u4e2d\u5fc3,Eureka\u53ea\u4f5c\u4e3aServer\u7aef\uff0c\u6240\u4ee5\u4e0d\u7528\u5411\u81ea\u8eab\u6ce8\u518c
+eureka.client.registerWithEureka=false 
+eureka.client.fetchRegistry=false
+
+#\u914d\u7f6e\u5b89\u5168\u9a8c\u8bc1\uff0c\u7528\u6237\u540d\u53ca\u5bc6\u7801,pom\u6587\u4ef6\u589e\u52a0\u6743\u9650\u914d\u7f6e\u65f6\u9700\u8981\u7528\u6237\u540d\u5bc6\u7801
+security.basic.enabled=true
+security.user.name=test
+security.user.password=123456
+
+#eureka\u7684\u5730\u5740\uff0c\u591a\u4e2aeureka\u670d\u52a1\u5730\u5740\uff0c\u53ef\u4ee5\u7528\uff0c\u53f7\u9694\u5f00
+eureka.client.serviceUrl.defaultZone=http://eureka-service.group1.hfservice.com/eureka/
