@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ule.emptyservice.module.dao.DoMapper">
+    <resultMap id="coin" type="com.ule.emptyservice.module.entity.Coin">
+        <id column="ID" jdbcType="DECIMAL" property="id"/>
+        <result column="USER_ID" jdbcType="DECIMAL" property="userId"/>
+        <result column="AVALIABLE_AMOUNT" jdbcType="DECIMAL" property="avaliableAmount"/>
+    </resultMap>
+    
+    <select id="loadByUserId" resultMap="coin" parameterType = "Long">
+    	<![CDATA[
+			SELECT * FROM T_COIN_ACCOUNT WHERE USER_ID=#{userId}
+		]]>	
+	</select>
+
+    <insert id="save" parameterType="com.ule.emptyservice.module.entity.Coin" >   
+		<![CDATA[
+			INSERT INTO T_COIN_ACCOUNT(ID,USER_ID,AVALIABLE_AMOUNT)  VALUES (#{id},#{userId},#{avaliableAmount})
+		]]>
+	</insert>
+</mapper>

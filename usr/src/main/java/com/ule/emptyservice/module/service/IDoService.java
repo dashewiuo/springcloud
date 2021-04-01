@@ -1,6 +1,8 @@
 package com.ule.emptyservice.module.service;
 
+import com.ule.emptyservice.module.dto.User;
+
 public interface IDoService {
 
-	public void exec(Long lOverTime);
+	public User get(Long id);
 }

@@ -5,7 +5,10 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+import com.ule.emptyservice.module.dto.User;
 import com.ule.emptyservice.module.service.IDoService;
 
 @Controller
@@ -18,8 +21,9 @@ public class DoController {
     private IDoService doService;
 
     @RequestMapping("/login")
-    public String login() {
-        
-        return "success";
+    @ResponseBody
+    public Object login(Long id) {
+    	User user = doService.get(id);
+    	return JSON.toJSONString(user);
     }
 }

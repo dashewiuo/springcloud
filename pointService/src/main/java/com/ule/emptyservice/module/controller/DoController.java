@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+import com.ule.emptyservice.module.entity.Coin;
 import com.ule.emptyservice.module.service.IDoService;
 
 @Controller
-@RequestMapping(value = "/do", produces = "text/plain;charset=UTF-8")
+@RequestMapping(value = "/coin", produces = "text/plain;charset=UTF-8")
 public class DoController {
 	
     private static Logger logger = Logger.getLogger(DoController.class);
@@ -18,18 +20,20 @@ public class DoController {
     @Resource
     private IDoService doService;
 
-    /**
-     * 订单取消、超时未支付、超时部分支付的订单返还库存
-     */
-    @RequestMapping("/exec")
+    @RequestMapping("/get")
     @ResponseBody
-    public String outTimePayReturnInv(Long lOverTime) {
-        
-    	if(lOverTime == null || lOverTime.longValue() == 0){
-    		return "lOverTime null";
-    	}
-    	doService.exec(lOverTime);
-
+    public String get(Long userId) {
+    	Coin coin = doService.get(userId);
+        return JSON.toJSONString(coin);
+    }
+    
+    @RequestMapping("/save")
+    @ResponseBody
+    public String save(Long id,Long userId, Double avaliableAmount) {
+    	Coin coin = new Coin();
+    	coin.setAvaliableAmount(avaliableAmount);
+    	coin.setUserId(userId);
+    	doService.create(coin);
         return "success";
     }
 }

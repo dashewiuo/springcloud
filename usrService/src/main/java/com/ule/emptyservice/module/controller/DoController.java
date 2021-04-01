@@ -1,35 +1,40 @@
 package com.ule.emptyservice.module.controller;
 
-import javax.annotation.Resource;
-
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+import com.ule.emptyservice.module.entity.User;
 import com.ule.emptyservice.module.service.IDoService;
 
+//@RestController等价于@Controller加上@ResponseBody
 @Controller
-@RequestMapping(value = "/do", produces = "text/plain;charset=UTF-8")
+@RequestMapping(value = "/", produces = "text/plain;charset=UTF-8")
 public class DoController {
 	
     private static Logger logger = Logger.getLogger(DoController.class);
 
-    @Resource
+    @Autowired
     private IDoService doService;
 
-    /**
-     * 订单取消、超时未支付、超时部分支付的订单返还库存
-     */
-    @RequestMapping("/exec")
+    @RequestMapping("/get")
     @ResponseBody
-    public String outTimePayReturnInv(Long lOverTime) {
-        
-    	if(lOverTime == null || lOverTime.longValue() == 0){
-    		return "lOverTime null";
-    	}
-    	doService.exec(lOverTime);
-
+    public Object get(Long id) {
+    	User user = doService.get(id);
+    	return JSON.toJSONString(user);
+    }
+    
+    
+    @RequestMapping("/save")
+    @ResponseBody
+    public String save(Long id, String mobile) {
+    	User user = new User();
+    	user.setId(id);
+    	user.setMobile(mobile);
+    	doService.create(user);
         return "success";
     }
 }

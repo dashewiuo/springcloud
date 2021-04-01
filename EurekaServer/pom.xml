@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.test.springeureka</groupId>
+	<groupId>com.hf.springcloud</groupId>
 	<artifactId>EurekaServer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -11,6 +11,7 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
+		<env>beta</env>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 	</properties>
@@ -35,7 +36,13 @@
 		            <groupId>org.springframework.boot</groupId>
 		            <artifactId>spring-boot-starter-logging</artifactId>
 		        </exclusion>
-		    </exclusions>
+		        <!-- 
+		        <exclusion>
+		        	<artifactId>spring-boot-starter-actuator</artifactId>
+		        	<groupId>org.springframework.boot</groupId>
+		        </exclusion>
+		         -->
+			</exclusions>
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
@@ -51,6 +58,16 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/conf/${env}</directory>
+			</resource>
+		</resources>
 		<plugins>
 			<!--使用该插件打包 -->
 			<plugin>
