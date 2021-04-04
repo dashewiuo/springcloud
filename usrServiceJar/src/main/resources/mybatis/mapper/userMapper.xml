@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ule.emptyservice.module.dao.DoMapper">
+    <resultMap id="user" type="com.ule.emptyservice.module.entity.User">
+        <id column="ID" jdbcType="DECIMAL" property="id"/>
+        <result column="MOBILE" jdbcType="VARCHAR" property="mobile"/>
+    </resultMap>
+    
+    <select id="loadById" resultMap="user" parameterType = "Long">
+    	<![CDATA[
+			SELECT * FROM T_USER WHERE ID=#{id}
+		]]>	
+	</select>
+
+    <insert id="save" parameterType="com.ule.emptyservice.module.entity.User" >   
+		<![CDATA[
+			INSERT INTO T_USER(ID,MOBILE)  VALUES (#{id},#{mobile})
+		]]>
+	</insert>
+</mapper>
